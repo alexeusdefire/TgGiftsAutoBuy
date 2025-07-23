@@ -1,0 +1,8 @@
+markdown-it-py==3.0.0
+mdurl==0.1.2
+pyaes==1.6.1
+pyasn1==0.6.1
+Pygments==2.19.2
+rich==14.0.0
+rsa==4.9.1
+Telethon==1.40.0
