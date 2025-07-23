@@ -1,6 +1,10 @@
 ## Установка:
 
-### 1. клонируй через git clone https://github.com/alexeusdefire/autobuytest.git в терминале
+### 1. клонируй репозиторий в терминале через 
+```bash
+git clone https://github.com/alexeusdefire/autobuytest.git
+``` 
+
 
 ### 2. активируй виртуальное окружение а потом установи зависимости при помощи:
 ```bash
