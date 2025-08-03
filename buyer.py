@@ -40,26 +40,29 @@ class Buyer:
     async def run(self):
         logger.info("BUYER STARTED")
         receiver = await self.client.get_input_entity(self.config["receiver"])
+        bought = 0
 
         while True:
-            gifts = await self.queue.get()
-            logger.info(f"RECEIVED {len(gifts)} GIFTS FROM CHECKER QUEUE")
+            gifts_queue = await self.queue.get()
 
-            for cycle in range(self.config["cycles"]):
-                bought = 0
+            if gifts_queue:
+                logger.info(f"RECEIVED {len(gifts_queue)} GIFTS FROM CHECKER QUEUE")
 
-                for gift in gifts:
-                    success = await self.try_buy(
-                        gift,
-                        receiver,
-                        self.config["hide"]
-                    )
+            else:
+                continue
 
-                    if success:
-                        bought += 1
-                        entity = await self.client.get_entity(receiver)
-                        stars = await self.client(functions.payments.GetStarsStatusRequest(peer=entity))
-                        logger.info(f"CYCLE {cycle + 1}: BOUGHT {bought} of gift {gift.id}")
-                        logger.info(f"STARS REMAINING: {stars.balance.amount}")
+            for gift in gifts_queue:
+                success = await self.try_buy(
+                    gift,
+                    receiver,
+                    self.config["hide"]
+                )
 
-                    await sleep(0.5)
+                if success:
+                    bought += 1
+                    entity = await self.client.get_entity(receiver)
+                    stars = await self.client(functions.payments.GetStarsStatusRequest(peer=entity))
+                    logger.info(f"BOUGHT: {bought}")
+                    logger.info(f"STARS REMAINING: {stars.balance.amount}")
+
+                await sleep(0.5)

@@ -2,7 +2,7 @@ from asyncio import sleep, Queue
 from config.logger import logger
 from config.manager import load_config
 from telethon import functions
-
+import random
 
 class Checker:
     def __init__(self, client, queue: Queue):
@@ -25,6 +25,7 @@ class Checker:
                     logger.info(f"FOUND {len(filtered)} GIFTS MATCHING CRITERIA")
                     for _ in range(self.config["cycles"]):
                         await self.queue.put(filtered)
+                    await sleep(3600)
 
                 else:
                     logger.info("NO GIFTS FOUND MATCHING CRITERIA")
@@ -32,4 +33,4 @@ class Checker:
             except Exception as e:
                 logger.error(f"CHECKER FAILED: {e}")
 
-            await sleep(30)
+            await sleep(random.randint(15, 30))
