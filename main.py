@@ -9,7 +9,7 @@ from buyer import Buyer
 
 async def main():
     config = load_config()
-    client = TelegramClient("session", config["api_id"], config["api_hash"])
+    client = TelegramClient("session", config["api_id"], config["api_hash"], system_version="4.16.30-vxCUSTOM")
     await client.start()
 
     queue = asyncio.Queue()
