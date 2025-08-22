@@ -9,10 +9,10 @@ DEFAULT_CONFIG = {
     "receiver": "", # Your Telegram username/id to receive gifts
     "limited": True, # True if you want to buy limited gifts or False to not
     "blacklist": [], # A list with the id of unwanted gifts
-    "hide": False, # True if you want to buy gifts with an anonymous signature or False to not
-    "cycles": 10, # Number of gift buying cycles
+    "hide": True, # True if you want to buy gifts with an anonymous signature or False to not
+    "cycles": 5, # Number of gift buying cycles
     "start": 150, # Start range price
-    "end": 10000 # End range price
+    "end": 5000 # End range price
 }
 
 def load_config():
