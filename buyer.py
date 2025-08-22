@@ -1,4 +1,4 @@
-from telethon.tl.types import InputInvoiceStarGift
+from telethon.tl.types import InputInvoiceStarGift, PeerUser, PeerChannel
 from telethon import functions
 
 from config.manager import load_config
@@ -39,7 +39,18 @@ class Buyer:
 
     async def run(self):
         logger.info("BUYER STARTED")
-        receiver = await self.client.get_input_entity(self.config["receiver"])
+        try:
+            int(self.config["receiver"])
+
+            try:
+                receiver = await self.client.get_input_entity(PeerUser(int(self.config["receiver"])))
+
+            except:
+                receiver = await self.client.get_input_entity(PeerChannel(int(self.config["receiver"])))
+
+        except:
+            receiver = await self.client.get_input_entity(PeerUser(self.config["receiver"]))
+
         bought = 0
 
         while True:
@@ -60,9 +71,9 @@ class Buyer:
 
                 if success:
                     bought += 1
-                    entity = await self.client.get_entity(receiver)
+                    entity = await self.client.get_entity("me")
                     stars = await self.client(functions.payments.GetStarsStatusRequest(peer=entity))
                     logger.info(f"BOUGHT: {bought}")
                     logger.info(f"STARS REMAINING: {stars.balance.amount}")
 
-                await sleep(0.5)
+                await sleep(0.1)
