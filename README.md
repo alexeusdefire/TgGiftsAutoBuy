@@ -25,6 +25,9 @@ Bot for automatic purchase of Telegram gifts
 
    1.3 Write your telegram username/id in __receiver__
 
+   **P.S:** **If you want to buy gifts for the channel, use the ID without -100 (For example: id -1002970474649,
+remove -100: 2970474649)**
+
    1.4 ⭐If you want to buy new limited gifts - write __True__ in __limited__ ⭐
 
    1.5 __Blacklist__ is list for unwanted gifts id's
