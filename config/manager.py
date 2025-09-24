@@ -12,7 +12,8 @@ DEFAULT_CONFIG = {
     "hide": True, # True if you want to buy gifts with an anonymous signature or False to not
     "cycles": 5, # Number of gift buying cycles
     "start": 150, # Start range price
-    "end": 5000 # End range price
+    "end": 5000, # End range price
+    "max_supply": 100000
 }
 
 def load_config():
