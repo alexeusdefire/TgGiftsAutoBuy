@@ -4,7 +4,7 @@ Bot for automatic purchase of Telegram gifts
 
 ## 😏 How bot works
 
-📖 Every 30 seconds, the program checks for gifts in Telegram based on the criteria you specify in config.json and
+📖 Every 5 seconds, the program checks for gifts in Telegram based on the criteria you specify in config.json and
 automatically purchases ALL gifts found that match the criteria. (if there are 2 gifts worth 300 stars and the settings
 specify start and end 300, it will purchase both gifts, regardless of the specified purchase cycles)
 
@@ -26,10 +26,6 @@ it if you want to resume operation.
 
 **P.S. To buy on the channel use **channel id without** the `-100` prefix.  
   *(example: use `1234567890` instead of `-1001234567890`)***
-
-- **limited** — if set to `True`, the bot will purchase new limited gifts.
-
-- **blacklist** — a list of gift IDs that the bot should not purchase.
 
 - **hide** — controls whether the sender information is shown:  
   `True` — anonymous,  
