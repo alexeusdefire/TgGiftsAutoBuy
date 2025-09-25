@@ -6,14 +6,12 @@ CONFIG_PATH = "config.json"
 DEFAULT_CONFIG = {
     "api_id": "", # Your api_id from Telegram App Configuration
     "api_hash": "", # Your api_hash from Telegram App Configuration
-    "receiver": "", # Your Telegram username/id to receive gifts
-    "limited": True, # True if you want to buy limited gifts or False to not
-    "blacklist": [], # A list with the id of unwanted gifts
+    "receiver": "", # Your Telegram username/id or channel id to receive gifts
     "hide": True, # True if you want to buy gifts with an anonymous signature or False to not
     "cycles": 5, # Number of gift buying cycles
-    "start": 150, # Start range price
-    "end": 5000, # End range price
-    "max_supply": 100000
+    "start": 1000, # Start range price
+    "end": 10000, # End range price
+    "max_supply": 100000 # Maximum supply range
 }
 
 def load_config():

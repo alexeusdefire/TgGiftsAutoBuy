@@ -1,4 +1,3 @@
-import random
 from asyncio import sleep, Queue
 from telethon import functions
 
@@ -21,8 +20,7 @@ class Checker:
                 gifts = await self.client(functions.payments.GetStarGiftsRequest(hash=0))
                 logger.info("FETCHED GIFTS FROM TELEGRAM")
                 filtered = [g for g in gifts.gifts if not g.sold_out
-                            and g.id not in self.config["blacklist"]
-                            and g.limited == self.config["limited"]
+                            and g.limited == True
                             and self.config["start"] <= g.stars <= self.config["end"]
                             and g.availability_total <= self.config["max_supply"]]
 
@@ -38,4 +36,4 @@ class Checker:
             except Exception as e:
                 logger.error(f"CHECKER FAILED: {e}")
 
-            await sleep(random.randint(15, 30))
+            await sleep(5)
