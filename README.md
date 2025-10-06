@@ -40,6 +40,7 @@ it if you want to resume operation.
 - **max_supply** — sets the maximum supply of gifts the bot can purchase.  
   *(the bot will only buy gifts where `supply <= max_supply`)*
 
+- **reverse** — order of purchase by price (true if you want from expensive to cheap and false if from cheap to expensive)
 
 ### 2. Create and activate virtual environment
 
