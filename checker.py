@@ -19,10 +19,11 @@ class Checker:
             try:
                 gifts = await self.client(functions.payments.GetStarGiftsRequest(hash=0))
                 logger.info("FETCHED GIFTS FROM TELEGRAM")
-                filtered = [g for g in gifts.gifts if not g.sold_out
+                filtered = sorted([g for g in gifts.gifts if not g.sold_out
                             and g.limited == True
                             and self.config["start"] <= g.stars <= self.config["end"]
-                            and g.availability_total <= self.config["max_supply"]]
+                            and g.availability_total <= self.config["max_supply"]],
+                                  key=lambda g: g.stars, reverse=self.config["reverse"])
 
                 if filtered:
                     logger.info(f"FOUND {len(filtered)} GIFTS MATCHING CRITERIA")

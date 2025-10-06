@@ -11,7 +11,8 @@ DEFAULT_CONFIG = {
     "cycles": 5, # Number of gift buying cycles
     "start": 1000, # Start range price
     "end": 10000, # End range price
-    "max_supply": 100000 # Maximum supply range
+    "max_supply": 100000, # Maximum supply range
+    "reverse": True
 }
 
 def load_config():
